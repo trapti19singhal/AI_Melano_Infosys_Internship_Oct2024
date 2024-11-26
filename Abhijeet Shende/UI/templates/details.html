@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melanoma Cancer Prediction Models</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        nav{
+            background-color: #4CAF50;
+            color: white;
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            margin-bottom: 10px;
+        }
+        nav h1 {
+            margin: 0;
+        }
+        .container {
+            padding: 40px;
+            margin-top: 60px;
+        }
+        h2 {
+            color: #333;
+        }
+        .model-section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .model-section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .model-section table, .model-section th, .model-section td {
+            border: 1px solid #ddd;
+        }
+        .model-section th, .model-section td {
+            padding: 8px;
+            text-align: left;
+        }
+        .model-section th {
+            background-color: #f2f2f2;
+        }
+        #unique-augmented-normalize-gray-model{
+            background-color: rgb(42, 234, 234);
+        }
+        nav a:hover {
+            color: #ffeb3b;
+            text-decoration: underline;
+            transition: color 0.3s ease-in-out;
+        }
+
+        table tr:hover {
+            background-color: aqua;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>Melanoma Cancer Prediction Models</h1>
+        <a href="/" style="position: absolute; right: 20px; bottom: 10px; color: white; text-decoration: none;">Go To Model</a>
+    </nav>
+    <div class="container">
+        <h2>Introduction</h2>
+        <p>This document provides a detailed overview of the models used for melanoma cancer prediction. Each model is described in detail, including the preprocessing steps, architecture, training process, and evaluation metrics.</p>
+
+        <h2>Data Preprocessing</h2>
+        <p>The original dataset consists of images categorized into benign and malignant classes. The dataset is split into training and testing sets. Duplicate images are identified and removed to ensure the dataset's integrity. Images are normalized and converted to grayscale to enhance the model's performance. Data augmentation techniques are applied to increase the dataset's size and variability.</p>
+
+        <h2>Models</h2>
+
+        <div class="model-section" id="unique-rgb-model">
+            <h3>Unique RGB Model</h3>
+            <p>The Unique RGB Model is trained on the unique RGB images from the dataset.</p>
+            <h4>Architecture</h4>
+            <pre>
+model = models.Sequential([
+    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(224, 224, 3)),
+    layers.BatchNormalization(),
+    layers.MaxPooling2D((2, 2)),
+
+    layers.Conv2D(64, (3, 3), activation='relu', kernel_regularizer=tf.keras.regularizers.l2(0.001)),
+    layers.BatchNormalization(),
+    layers.MaxPooling2D((2, 2)),
+
+    layers.Conv2D(128, (3, 3), activation='relu', kernel_regularizer=tf.keras.regularizers.l2(0.001)),
+    layers.BatchNormalization(),
+    layers.MaxPooling2D((2, 2)),
+
+    layers.Conv2D(256, (3, 3), activation='relu', kernel_regularizer=tf.keras.regularizers.l2(0.001)),
+    layers.BatchNormalization(),
+    layers.MaxPooling2D((2, 2)),
+
+    layers.Flatten(),
+    layers.Dense(512, activation='relu', kernel_regularizer=tf.keras.regularizers.l2(0.01)),
+    layers.Dropout(0.5),
+
+    layers.Dense(1, activation='sigmoid')
+])
+            </pre>
+            <h4>Training</h4>
+            <p>Optimizer: Adam<br>Loss: Binary Crossentropy<br>Metrics: Accuracy<br>Callbacks: EarlyStopping, ReduceLROnPlateau</p>
+            <h4>Evaluation</h4>
+            <p>Accuracy: 88.00%<br>Loss: 0.77</p>
+    </div>
+
+        <div class="model-section" id="unique-normalize-gray-model">
+            <h3>Unique Normalize Gray Model</h3>
+            <p>The Unique Normalize Gray Model is trained on the unique normalized grayscale images from the dataset.</p>
+            <h4>Architecture</h4>
+            <pre>
+Similar to the Unique RGB Model but with grayscale input.
+            </pre>
+            <h4>Training</h4>
+            <p>Optimizer: Adam<br>Loss: Binary Crossentropy<br>Metrics: Accuracy<br>Callbacks: EarlyStopping, ReduceLROnPlateau</p>
+            <h4>Evaluation</h4>
+            <p>Accuracy: 90.00%<br>Loss: 0.66</p>
+    </div>
+
+        <div class="model-section" id="unique-augmented-rgb-model">
+            <h3>Unique Augmented RGB Model</h3>
+            <p>The Unique Augmented RGB Model is trained on the augmented RGB images from the dataset.</p>
+            <h4>Architecture</h4>
+            <pre>
+Similar to the Unique RGB Model.
+            </pre>
+            <h4>Training</h4>
+            <p>Optimizer: Adam<br>Loss: Binary Crossentropy<br>Metrics: Accuracy<br>Callbacks: EarlyStopping, ReduceLROnPlateau</p>
+            <h4>Evaluation</h4>
+            <p>Accuracy: 77.00%<br>Loss: 1.24</p>
+    </div>
+
+        <div class="model-section" id="unique-augmented-normalize-gray-model">
+            <h3>Unique Augmented Normalize Gray Model (Model That We Personally Recommend)</h3>
+            <p>The Unique Augmented Normalize Gray Model is trained on the augmented normalized grayscale images from the dataset.</p>
+            <h4>Architecture</h4>
+            <pre>
+Similar to the Unique RGB Model but with grayscale input.
+            </pre>
+            <h4>Training</h4>
+            <p>Optimizer: Adam<br>Loss: Binary Crossentropy<br>Metrics: Accuracy<br>Callbacks: EarlyStopping, ReduceLROnPlateau</p>
+            <h4>Evaluation</h4>
+            <p>Accuracy: 91.00%<br>Loss: 0.81</p>
+    </div>
+
+        <div class="model-section" id="vgg16-model">
+            <h3>VGG16 Model</h3>
+            <p>The VGG16 Model is a pre-trained model fine-tuned on the melanoma dataset.</p>
+            <h4>Architecture</h4>
+            <pre>
+base_model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+model = models.Sequential([
+    base_model,
+    layers.Flatten(),
+    layers.Dense(512, activation='relu'),
+    layers.Dropout(0.5),
+    layers.Dense(1, activation='sigmoid')
+])
+            </pre>
+            <h4>Training</h4>
+            <p>Optimizer: Adam<br>Loss: Binary Crossentropy<br>Metrics: Accuracy<br>Callbacks: EarlyStopping, ReduceLROnPlateau</p>
+            <h4>Evaluation</h4>
+            <p>Accuracy: 86.01%<br>Loss: 0.34</p>
+    </div>
+
+        <div class="model-section" id="vgg19-model">
+            <h3>VGG19 Model</h3>
+            <p>The VGG19 Model is a pre-trained model fine-tuned on the melanoma dataset.</p>
+            <h4>Architecture</h4>
+            <pre>
+base_model = VGG19(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+model = models.Sequential([
+    base_model,
+    layers.Flatten(),
+    layers.Dense(512, activation='relu'),
+    layers.Dropout(0.5),
+    layers.Dense(1, activation='sigmoid')
+])
+            </pre>
+            <h4>Training</h4>
+            <p>Optimizer: Adam<br>Loss: Binary Crossentropy<br>Metrics: Accuracy<br>Callbacks: EarlyStopping, ReduceLROnPlateau</p>
+            <h4>Evaluation</h4>
+            <p>Accuracy: 83.00%<br>Loss: 0.39</p>
+    </div>
+
+        <h2>Results</h2>
+        <table>
+            <tr>
+                <th>Model</th>
+                <th>Accuracy</th>
+                <th>Loss</th>
+            </tr>
+            <tr>
+                <td>Unique RGB Model</td>
+                <td>88.00%</td>
+                <td>0.77</td>
+            </tr>
+            <tr>
+                <td>Unique Normalize Gray Model</td>
+                <td>90.00%</td>
+                <td>0.66</td>
+            </tr>
+            <tr>
+                <td>Unique Augmented RGB Model</td>
+                <td>77.00%</td>
+                <td>1.24</td>
+            </tr>
+            <tr>
+                <td>Unique Augmented Normalize Gray Model</td>
+                <td>91.00%</td>
+                <td>0.81</td>
+            </tr>
+            <tr>
+                <td>VGG16 Model</td>
+                <td>86.01%</td>
+                <td>0.34</td>
+            </tr>
+            <tr>
+                <td>VGG19 Model</td>
+                <td>83.00%</td>
+                <td>0.39</td>
+            </tr>
+        </table>
+
+        <h2>Conclusion</h2>
+        <p>This document provides a comprehensive overview of the models used for melanoma cancer prediction. Each model's architecture, training process, and evaluation metrics are detailed, along with visual representations to aid understanding.</p>
+    </div>
+    <footer style="background-color: #4CAF50; color: white; text-align: center; padding: 2px 0; width: 100%; bottom: 0;">
+        <p>Disclaimer: This project is under development. Our model may make some mistakes, so it is advised to consult a doctor.</p>
+    </footer>
+</body>
+</html>
