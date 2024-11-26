@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melano_AI: Skin Cancer Detection</title>
+    <link rel="stylesheet" href="./static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Melano_AI</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#upload">Upload</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header id="home">
+        <div class="container">
+            <h1>Welcome to Skin Cancer Detection</h1>
+            <p>Empowering healthcare with AI for early skin cancer detection.</p>
+            <a href="#upload" class="btn-primary">Get Started</a>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2>Why Choose Us?</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>AI-Powered</h3>
+                    <p>Leverages state-of-the-art AI to classify skin lesions as benign or malignant.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Fast & Accurate</h3>
+                    <p>Get instant results with high precision for better healthcare decisions.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>User-Friendly</h3>
+                    <p>A simple interface to upload images and receive immediate feedback.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Section -->
+    <section id="upload" class="upload-section">
+        <div class="container">
+            <h2>Analyze Your Skin</h2>
+            <p>Upload a photo of the lesion to check if it’s benign or malignant.</p>
+            <form id="upload-form" method="post" enctype="multipart/form-data" action="/upload">
+                <label for="image-upload" class="file-label">Choose an Image</label>
+                <input type="file" id="image-upload" class="image-upload" name="image" accept="image/*" required>
+                <button type="submit" class="detect-btn">Detect Now</button>
+            </form>
+            <div id="result-section">
+                <h3 id="prediction"></h3>
+                <div id="image-container">
+                    <img id="uploaded-image" src="" alt="Uploaded Image Preview" style="display: none; max-width: 300px; height: auto;">
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <p>&copy; 2024 Melano_AI. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+<script src="../static/scripts.js"></script>
+</html>
