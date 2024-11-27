@@ -1,0 +1,13 @@
+/* Ensuring that the background image is applied to the container */
+.background-container {
+    background-image: url('{{ url_for("static", filename="background.jpeg") }}');  /* Flask URL for static files */
+    background-size: cover;   /* Ensure the image covers the entire container */
+    background-position: center center; /* Center the image */
+    background-repeat: no-repeat; /* Avoid repeating the image */
+    height: 100vh;  /* Ensure the container takes the full height of the viewport */
+    color: white;    /* Set text color to white for visibility */
+}
+
+.text-center {
+    text-align: center;
+}

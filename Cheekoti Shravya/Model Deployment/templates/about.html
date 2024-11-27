@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container mt-5" style="background-color: #f0f0f0; padding: 30px; border-radius: 10px;">
+        <h1 class="text-center text-primary" style="font-size: 2.5rem;">Objective</h1>
+        <p class="lead text-center" style="color: #333; font-size: 1.1rem;">
+            This project utilizes a Convolutional Neural Network (CNN) to predict the presence of skin cancer from dermatological images. The CNN model is trained to classify skin lesions as either benign or malignant based on the features extracted from the images. By leveraging deep learning techniques, the project aims to assist healthcare professionals in diagnosing skin cancer in its early stages, thereby enabling quicker and more efficient medical decisions.
+        </p>
+        
+        <h3 class="text-center mt-5 text-success" style="font-size: 2rem;">Sample Images</h3>
+        
+        <!-- Displaying two sample images: Benign and Malignant -->
+        <div class="row mt-4">
+            <div class="col-md-6 text-center">
+                <div class="border p-3 shadow-lg" style="border-radius: 10px; background-color: #f9f9f9; transition: transform 0.3s ease;">
+                    <h4 class="text-info" style="font-size: 1.3rem;">Benign Lesion</h4>
+                    <img src="{{ url_for('static', filename='uploads/benign_sample.jpg') }}" class="img-fluid" alt="Benign Lesion" style="max-height: 300px; transition: transform 0.3s ease;">
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <div class="border p-3 shadow-lg" style="border-radius: 10px; background-color: #f9f9f9; transition: transform 0.3s ease;">
+                    <h4 class="text-danger" style="font-size: 1.3rem;">Malignant Lesion</h4>
+                    <img src="{{ url_for('static', filename='uploads/malignant_sample.jpg') }}" class="img-fluid" alt="Malignant Lesion" style="max-height: 300px; transition: transform 0.3s ease;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add hover effect using CSS -->
+    <style>
+        .border:hover {
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+        .img-fluid:hover {
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+    </style>
+{% endblock %}

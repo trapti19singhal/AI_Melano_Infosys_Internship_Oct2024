@@ -1,0 +1,95 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container mt-5" style="background-color: skyblue;">
+        <h1 class="text-center my-4">AI-powered Melanoma Detection</h1>
+
+        <!-- Upload Image Form -->
+        <form method="POST" enctype="multipart/form-data" id="predict-form">
+            <div class="mb-3">
+                <label for="file" class="form-label">Upload an Image</label>
+                <input type="file" class="form-control" id="file" name="file" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+
+        <!-- Image Preview Before Submission -->
+        <h4 class="text-center mt-4">Preview Image</h4>
+        <div class="text-center">
+            <img id="image-preview" src="#" alt="Image Preview" class="img-fluid" style="max-height: 300px; display: none;">
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loading-spinner" class="text-center" style="display: none;">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p>Processing image...</p>
+        </div>
+
+        <!-- Prediction Result -->
+        {% if predicted_class %}
+            <div class="mt-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Prediction Result</h3>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="{{ 'text-success' if predicted_class == 'Benign' else 'text-danger' }}">
+                            <i class="fas {{ 'fa-check-circle' if predicted_class == 'Benign' else 'fa-times-circle' }}"></i>
+                            Predicted Class: {{ predicted_class }}
+                        </h5>
+                        <h5>Confidence: {{ confidence * 100 | round(2) }}%</h5>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: {{ (confidence * 100) | round(2) }}%" aria-valuenow="{{ (confidence * 100) | round(2) }}" aria-valuemin="0" aria-valuemax="100"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if predicted_class == 'Malignant' %}
+                <div class="alert alert-danger text-center mt-4">
+                    <strong>Warning!</strong> The lesion appears to be malignant. Please consult a healthcare professional immediately.
+                </div>
+            {% endif %}
+        {% endif %}
+
+        <!-- Footer -->
+        <footer class="mt-5 text-center py-4">
+            <p>&copy; 2024 Melano AI | All Rights Reserved</p>
+            <p><a href="/privacy-policy">Privacy Policy</a> | <a href="/terms">Terms & Conditions</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Image preview before submitting
+        const fileInput = document.getElementById('file');
+        const previewImage = document.getElementById('image-preview');
+
+        fileInput.addEventListener('change', function(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                previewImage.src = reader.result;
+                previewImage.style.display = 'block';
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        });
+
+        // Loading spinner visibility during form submission
+        const form = document.getElementById('predict-form');
+        const spinner = document.getElementById('loading-spinner');
+
+        form.addEventListener('submit', function() {
+            spinner.style.display = 'block'; // Show the spinner on submit
+        });
+
+        // Reset form and preview
+        function resetForm() {
+            document.querySelector('form').reset();
+            previewImage.style.display = 'none';
+        }
+    </script>
+
+    <!-- Include Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+{% endblock %}

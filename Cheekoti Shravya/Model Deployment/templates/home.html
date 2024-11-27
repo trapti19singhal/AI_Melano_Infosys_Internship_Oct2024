@@ -1,0 +1,134 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <!-- Background Image Section -->
+    <div class="container-fluid background-image">
+        <!-- Title with animation -->
+        <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+            <div class="text-center">
+                <h1 class="animated-title">Melano AI Skin Cancer Detection Using Convolutional Neural Network</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="container mt-5" style="background-color: #f0f0f0; padding: 30px; border-radius: 10px;">
+        <h2 class="text-center">Why Choose Us?</h2>
+        <div class="why-choose-us">
+            <!-- AI Powered -->
+            <div class="choose-box">
+                <h5 class="text-primary">AI Powered</h5>
+                <p>Leverage state-of-the-art AI to classify skin lesions as Benign or Malignant.</p>
+            </div>
+            <!-- Fast and Accurate -->
+            <div class="choose-box">
+                <h5 class="text-primary">Fast & Accurate</h5>
+                <p>Our model delivers quick and reliable results for early detection of skin cancer.</p>
+            </div>
+            <!-- User Friendly -->
+            <div class="choose-box">
+                <h5 class="text-primary">User Friendly</h5>
+                <p>Simple and easy-to-use interface for healthcare professionals and users alike.</p>
+            </div>
+        </div>
+
+        <!-- Get Started Button -->
+        <div class="text-center mt-4">
+            <a href="/predict" class="btn btn-primary btn-lg">Get Started</a>
+        </div>
+    </div>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Background Image */
+        .background-image {
+            background-image: url("{{ url_for('static', filename='uploads/background.jpg') }}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+            color: white;
+        }
+
+        /* Title animation */
+        .animated-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: black; /* Set text color to black */
+            animation: fadeIn 3s ease-out, slideIn 2s ease-out;
+            text-align: center;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Slide-in from the left */
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Styling for Why Choose Us section */
+        .why-choose-us {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .choose-box {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            width: 250px;
+            height: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .choose-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .choose-box h5 {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            color: #007bff; /* Set the text color to blue */
+        }
+
+        .choose-box p {
+            font-size: 1em;
+            color: #6c757d;
+        }
+
+        /* Button styling */
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+    </style>
+{% endblock %}
