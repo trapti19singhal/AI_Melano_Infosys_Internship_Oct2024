@@ -1,0 +1,246 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #0f1a2b; /* Base dark blue */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Prevent scrollbars */
+    position: relative;
+}
+
+/* Subtle wave pattern */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.05) 0px,
+        rgba(255, 255, 255, 0.05) 2px,
+        transparent 2px,
+        transparent 10px
+    );
+    z-index: -3; /* Behind everything */
+}
+
+/* Abstract curved shapes */
+.wave {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 40%;
+    transform: rotate(15deg);
+    z-index: -2;
+}
+
+/* First wave */
+.wave-1 {
+    width: 300px;
+    height: 400px;
+    top: 10%;
+    left: -50px;
+    transform: rotate(25deg);
+}
+
+/* Second wave */
+.wave-2 {
+    width: 400px;
+    height: 500px;
+    bottom: -80px;
+    right: 20%;
+    transform: rotate(-10deg);
+}
+
+/* Third wave */
+.wave-3 {
+    width: 200px;
+    height: 250px;
+    top: 60%;
+    left: 90%;
+    transform: rotate(30deg);
+}
+
+/* Dots pattern overlay */
+.dots {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: -1;
+    opacity: 0.6;
+}
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.top-banner {
+    text-align: center;
+    font-size: 3rem; /* Large size for emphasis */
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(to right, #2c5ae1, #66b2ff); /* Blue gradient */
+    background: linear-gradient(to right, #66b2ff, #022d52);
+    padding: 30px 10px; /* Padding for spacing */
+    position: fixed; /* Fixes it at the top of the page */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1; /* Ensure the banner is above other content */
+    width: 100%; /* Full width of the page */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+.container {
+    text-align: center;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    background-color: #1d2b3a; /* Dark blue container */
+    max-width: 600px;
+    width: 100%;
+    animation: slideUp 1s ease-out;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    animation: slideInFromLeft 1s ease-out;
+}
+
+.header p {
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+    animation: slideInFromLeft 1.5s ease-out;
+}
+
+form input[type="file"] {
+    padding: 10px;
+    font-size: 1.2rem;
+    background-color: #2a3a56; /* Light blue input */
+    color: #fff;
+    border: 2px solid #3b4c6c; /* Slightly lighter blue border */
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="file"]:hover {
+    background-color: #2e4a70; /* Hover effect with darker light blue */
+}
+.link-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.link-section a {
+    color: #007BFF;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.link-section a:hover {
+    text-decoration: underline;
+}
+
+#hidden-content {
+    background-color: #170101;
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form button {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    background-color: #66b2ff; /* Light blue button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s ease;
+    animation: bounce 1s ease-in-out infinite;
+}
+
+form button:hover {
+    background-color: #3399ff; /* Darker light blue on hover */
+    transform: translateY(-5px); /* Button hover lift effect */
+}
+
+.result {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #2a3a56; /* Light blue result container */
+    border-radius: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
+    animation: fadeInFromBottom 1s ease-out;
+}
+
+.result.show {
+    visibility: visible;
+    opacity: 1;
+    animation: fadeInFromBottom 1s ease-out;
+}
+
+@keyframes fadeInBackground {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInFromBottom {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}

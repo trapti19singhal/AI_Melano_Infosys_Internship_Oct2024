@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infosys Internship Project - MelanoAI: Intelligent Skin Cancer  Screening</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+</head>
+<body>
+    <body>
+        <!-- Abstract Wave Shapes -->
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+    
+        <!-- Dots Pattern -->
+        <div class="dots"></div>
+    
+        
+    </body>
+    
+    <div class="top-banner">
+        Infosys Springboard Internship Project
+      </div>
+    
+    <div class="container">
+        <header class="header">
+            <p>MelanoAI: Intelligent Skin Cancer</p>
+            
+        </header>
+        <div class="content">
+            <form id="upload-form" action="/predict" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" accept="image/*" required>
+                <form action="/predict" method="POST" enctype="multipart/form-data">
+                    <h3 for="model">       Select Model:</h3>
+                    <select name="model" id="model">
+                        {% for model in models %}
+                            <option value="{{ model }}">{{ model }}</option>
+                            
+                        {% endfor %}
+                    </select>
+                    
+                    <br><br>
+                <button type="submit">Upload Image</button>
+            </form>
+            <div id="prediction-result" class="result">
+                <!-- Result will appear here -->
+            </div>
+            <div class="faq-section">
+                
+            </div>
+            
+    
+            <!-- Hidden Content to Show/Hide -->
+            
+        </div>
+    </div>
+    
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
