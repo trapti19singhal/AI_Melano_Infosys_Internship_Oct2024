@@ -1,0 +1,6 @@
+Google drive link for the image dataset:
+https://drive.google.com/drive/folders/1zjer_BN16ME93cSyq9dugRnn6UFHbmyD?usp=sharing
+
+Google drive link for the model with highest accuracy:
+https://drive.google.com/file/d/1P4DICecUnEOvVShwrIPO0HhaaBtYhO4E/view?usp=sharing
+
