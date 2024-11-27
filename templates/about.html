@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infosys Springboard Internship Project</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #006666;
+            background-size: cover;
+            color: #333;
+        }
+        nav {
+            background: rgba(0, 128, 128, 0.9);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        nav h1 {
+            color: #fff;
+            margin: 0;
+            font-size: 24px;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+        .overlay {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 0;
+            min-height: 10vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 10px;
+            font-size: 28px;
+            color: #008080;
+        }
+        h2 {
+            font-size: 20px;
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="file"] {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #008080;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #006666;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f7f7f7;
+        }
+        .result img {
+            max-width: 100%;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>MelanoAI</h1>
+        <ul>
+            <li><a href="#home">Predict</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#features">Features</a></li>
+        </ul>
+    </nav>
+    <section id="about" style="padding: 50px 20px; text-align: center; background: rgba(255, 255, 255, 0.8);">
+        <h2>About</h2>
+        <p>This project is part of the Infosys Springboard Internship Program. It uses a deep learning model to detect skin cancer by analyzing lesion images, helping in early diagnosis and treatment.</p>
+    </section>
+    <section id="features" style="padding: 50px 20px; text-align: center; background: rgba(240, 240, 240, 0.9);">
+        <h2>Features</h2>
+        <ul style="list-style: none; padding: 0;">
+            <li>✔ Easy-to-use web interface for uploading images</li>
+            <li>✔ Deep learning-based skin cancer detection</li>
+            <li>✔ High prediction accuracy with real-time feedback</li>
+            <li>✔ Healthcare-inspired UI design</li>
+        </ul>
+    <div class="overlay" id="home">
+        <div class="container">
+            <h1>Infosys Springboard Internship Project</h1>
+            <h2>Skin Cancer Detection</h2>
+            <form id="uploadForm" action="/predict" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept="image/*" required>
+                <button type="submit">Predict</button>
+            </form>
+            <div class="result" id="result" style="display:none;">
+                <p><strong>Prediction:</strong> <span id="prediction"></span></p>
+                <img id="uploadedImage" src="" alt="Uploaded Image">
+                <p><strong>Accuracy:</strong> <span id="accuracy">99.93%</span></p>
+            </div>
+        </div>
+    </div>
+    <footer style="text-align: center; padding: 20px; background: rgba(0, 128, 128, 0.9); color: white;">
+        &copy; 2024 Infosys Springboard. All rights reserved.
+    </footer>
+    <script>
+        const form = document.getElementById('uploadForm');
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+
+            // Show loading message while waiting for the response
+            document.getElementById('prediction').innerText = 'Loading...';
+            document.getElementById('accuracy').innerText = '';
+
+            const response = await fetch('/predict', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (result.prediction) {
+                document.getElementById('prediction').innerText = result.prediction;
+                document.getElementById('uploadedImage').src = URL.createObjectURL(form.file.files[0]);
+                document.getElementById('accuracy').innerText = result.accuracy;
+                document.getElementById('result').style.display = 'block';
+            } else {
+                document.getElementById('prediction').innerText = "Error: " + result.error;
+                document.getElementById('result').style.display = 'block';
+            }
+        };
+    </script>
+</body>
+</html>

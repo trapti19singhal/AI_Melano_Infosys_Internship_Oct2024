@@ -1,72 +1,74 @@
 from flask import Flask, render_template, request, jsonify
 import numpy as np
-import sys
-sys.stdout.reconfigure(encoding='utf-8')
+import tensorflow as tf
 from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.image import img_to_array
-from PIL import Image
+from tensorflow.keras.preprocessing.image import img_to_array, load_img
 import os
-import io
-import uuid
 
-# Suppress TensorFlow warnings
-os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
-
+# Initialize Flask app
 app = Flask(__name__)
 
-# Create uploads folder if it doesn't exist
-os.makedirs("static/uploads", exist_ok=True)
+# Load the pre-trained CNN model
+MODEL_PATH = "cnn_model.h5"
+model = load_model(MODEL_PATH)
 
-# Load the trained model
-model = load_model("Augmented_Grayscale_Model.h5")  # Replace with your actual model path
-print("Model loaded successfully!")
+# Define allowed image extensions
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
-# Helper function for preprocessing images
-def preprocess_image(image, target_size):
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def preprocess_image(file_path):
     """
-    Resize and preprocess the image for model input.
+    Preprocess the image for prediction.
+    Assumes the model expects images of size 126x126x3.
     """
-    image = image.resize(target_size)  # Resize the image to match model input size
-    image = img_to_array(image)  # Convert image to array
-    image = np.expand_dims(image, axis=0)  # Add batch dimension
-    image = image / 255.0  # Normalize pixel values
-    return image
+    # Load and resize image
+    img = load_img(file_path, target_size=(126, 126))  # Resize to 126x126
+    img_array = img_to_array(img)  # Convert to array (126, 126, 3)
+    img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension (1, 126, 126, 3)
 
-@app.route("/", methods=["GET"])
-def home():
-    return render_template("index.html")  
+    # Normalize image
+    img_array = img_array / 255.0  # Normalize to [0, 1]
+    return img_array
+
+@app.route("/")
+def index():
+    return render_template("about.html")
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    if "imagefile" not in request.files:
-        return jsonify({"error": "No file uploaded"}), 400
+    if "file" not in request.files:
+        return jsonify({"error": "No file part"}), 400
 
-    file = request.files["imagefile"]
+    file = request.files["file"]
+
     if file.filename == "":
-        return jsonify({"error": "No file selected"}), 400
+        return jsonify({"error": "No selected file"}), 400
 
-    try:
-        # Generate a unique filename for the uploaded image
-        unique_filename = str(uuid.uuid4()) + ".jpg"
-        image_path = os.path.join("static/uploads", unique_filename)
+    if file and allowed_file(file.filename):
+        file_path = os.path.join("uploads", file.filename)
 
-        # Save the image to the "static/uploads" folder
-        file.save(image_path)
+        # Save the uploaded file temporarily
+        if not os.path.exists("uploads"):
+            os.makedirs("uploads")
+        file.save(file_path)
 
-        image = Image.open(image_path).convert("RGB")  
-        processed_image = preprocess_image(image, target_size=(150, 150))  
+        try:
+            # Preprocess the image and predict
+            img = preprocess_image(file_path)
+            prediction = model.predict(img)
+            os.remove(file_path)  # Clean up uploaded file
 
-        # Predict using the model
-        prediction = model.predict(processed_image)
-        confidence = float(prediction[0][0])  # Confidence score
-        result = "Malignant" if confidence > 0.5 else "Benign"
-        confidence_percentage = round(confidence * 100, 2) if result == "Malignant" else round((1 - confidence) * 100, 2)
+            # Customize the prediction output based on your model
+            label = "Benign" if prediction[0][0] < 0.4 else "Malignant"
+            accuracy = round(float(max(prediction[0]) * 100), 2)
 
-        # Return the prediction result and image path to the template
-        return render_template("index.html", prediction=result,confidence=confidence_percentage,image_path=image_path)
-  
-    except Exception as e:
-        return jsonify({"error": f"Error processing image: {str(e)}"}), 500
+            return jsonify({"prediction": label, "accuracy": f"{accuracy}%"})
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+
+    return jsonify({"error": "Invalid file type"}), 400
 
 if __name__ == "__main__":
     app.run(debug=True)
