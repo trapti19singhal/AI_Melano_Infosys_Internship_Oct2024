@@ -1,6 +1,6 @@
 How to run this project
 
-First run the notebook to save the cnn_model.h5 from the zip file present in the repo then follow the steps below.
+First run the notebook to save the cnn_model.h5 from the drive link present in model.txt in the repo then follow the steps below.
 
 1) Create a virtual environment
 2) Open Gitbash/CMD/Powershell
