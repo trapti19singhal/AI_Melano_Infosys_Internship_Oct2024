@@ -6,7 +6,11 @@ How to run this project
 Open Gitbash/CMD/Powershell
 
 2.Write python -m venv virtualenv
+
 3.For gitbash -> source virtualenv/Scripts/activate
+
 4.For CMD/Powershell -> cd virtualenv/Scripts/activate -> cd ../../
+
 5.Then while staying in virtual environment write -> pip install Flask tensorflow numpy
+
 6.Run the app by writing python app.py
