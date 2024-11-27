@@ -1,10 +1,12 @@
 How to run this project
 
-First run the notebook to save the VGG16 model or download the .keras file from link provided then follow the steps below.
-Create a virtual environment
+**First run the notebook to save the VGG16 model or download the .keras file from link provided then follow the steps below.
+
+1.Create a virtual environment
 Open Gitbash/CMD/Powershell
-Write python -m venv virtualenv
-For gitbash -> source virtualenv/Scripts/activate
-For CMD/Powershell -> cd virtualenv/Scripts/activate -> cd ../../
-Then while staying in virtual environment write -> pip install Flask tensorflow numpy
-Run the app by writing python app.py
+
+2.Write python -m venv virtualenv
+3.For gitbash -> source virtualenv/Scripts/activate
+4.For CMD/Powershell -> cd virtualenv/Scripts/activate -> cd ../../
+5.Then while staying in virtual environment write -> pip install Flask tensorflow numpy
+6.Run the app by writing python app.py
