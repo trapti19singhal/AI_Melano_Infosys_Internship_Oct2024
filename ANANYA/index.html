@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Cancer Detection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(135deg, #2c3e50, #4ca1af);
+        color: white;
+        overflow-x: hidden;
+        position: relative;
+      }
+      .container {
+        margin-top: 5%;
+        text-align: center;
+      }
+      .form-card {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 25px;
+        border-radius: 15px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      }
+      h1 {
+        font-weight: bold;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+      .btn-primary {
+        background: linear-gradient(90deg, #1d976c, #93f9b9);
+        border: none;
+        color: black;
+        font-weight: bold;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(90deg, #93f9b9, #1d976c);
+      }
+      .alert {
+        margin-top: 20px;
+        color: #333;
+        background: #f7f7f7;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+      }
+      footer {
+        margin-top: 30px;
+        font-size: 0.85rem;
+        color: #dcdcdc;
+      }
+      img {
+        border: 2px solid white;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Skin Cancer Detection</h1>
+      <div class="form-card mx-auto" style="max-width: 500px;">
+        <form action="/predict" method="post" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="imagefile" class="form-label">Upload Image</label>
+            <input type="file" class="form-control" id="imagefile" name="imagefile" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Predict</button>
+        </form>
+      </div>
+
+      {% if prediction and confidence %}
+        <div class="alert" role="alert">
+          The image is classified as <strong>{{ prediction }}</strong> with a confidence of <strong>{{ confidence }}%</strong>.
+        </div>
+      {% endif %}
+
+      {% if image_path %}
+        <div class="mt-4">
+          <h3>Uploaded Image:</h3>
+          <img src="{{ image_path }}" alt="Uploaded Image" style="max-width: 100%; height: auto;">
+        </div>
+      {% endif %}
+    </div>
+
+    <footer class="text-center">
+      &copy; 2024 Skin Cancer Detection. All rights reserved.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
