@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Predict - Melano AI{% endblock %}
+{% block content %}
+<section class="predict">
+    <h2>Upload an Image for Prediction</h2>
+    <form method="POST" enctype="multipart/form-data" id="predict-form">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit" class="btn-primary">Predict</button>
+    </form>
+    
+    <div id="loading-indicator" style="display: none;">
+        <p>Processing your image... Please wait.</p>
+    </div>
+    
+    {% if result is not none %}
+        <div class="result">
+            <h3>Prediction Result</h3>
+            <p><strong>Prediction:</strong> {{ result.label }}</p>
+            <p><strong>Confidence:</strong> {{ result.confidence }}%</p>
+        </div>
+        
+        {% if uploaded_image_url %}
+        <div class="uploaded-image">
+            <h4>Uploaded Image:</h4>
+            <img src="{{ uploaded_image_url }}" alt="Uploaded Image for Prediction">
+        </div>
+        {% endif %}
+    {% endif %}
+    
+    {% if error_message %}
+    <div class="error-message">
+        <p><strong>Error:</strong> {{ error_message }}</p>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

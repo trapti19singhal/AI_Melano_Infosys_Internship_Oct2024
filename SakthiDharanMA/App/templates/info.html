@@ -1,0 +1,60 @@
+<!-- info.html -->
+{% extends "base.html" %}
+{% block title %}Information - Melano AI{% endblock %}
+{% block content %}
+<section class="info">
+    <h2>Information on Benign and Malignant Lesions</h2>
+    <img src="{{ url_for('static', filename='images/info.jpg') }}" alt="Info Image" style="width: 40%; height: auto;">
+    <p>Learn about the differences between benign and malignant skin lesions and how to identify potential signs of skin cancer.</p>
+    
+    <h3>Understanding Benign and Malignant Skin Lesions</h3>
+    <p>Skin lesions can be categorized as either benign (non-cancerous) or malignant (cancerous). Recognizing the differences between them and understanding the warning signs of skin cancer is critical for early detection and effective treatment.</p>
+    
+    <h4>Benign Lesions</h4>
+    <ul>
+        <li><strong>Definition:</strong> Non-cancerous growths that typically pose no health risks.</li>
+        <li><strong>Characteristics:</strong>
+            <ul>
+                <li>Smooth, even borders.</li>
+                <li>Uniform color throughout.</li>
+                <li>Regular, symmetrical shapes.</li>
+                <li>Stable in size and appearance over time.</li>
+            </ul>
+        </li>
+        <li><strong>Examples:</strong> Freckles, moles, seborrheic keratosis, and skin tags.</li>
+    </ul>
+    
+    <h4>Malignant Lesions</h4>
+    <ul>
+        <li><strong>Definition:</strong> Cancerous growths that may invade nearby tissues or spread (metastasize) to other parts of the body.</li>
+        <li><strong>Characteristics:</strong>
+            <ul>
+                <li>Asymmetry (one half does not match the other).</li>
+                <li>Irregular or poorly defined borders.</li>
+                <li>Multiple colors, such as shades of brown, black, red, white, or blue.</li>
+                <li>Diameter larger than 6mm (about the size of a pencil eraser).</li>
+                <li>Evolution in size, shape, or color over time.</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h4>Signs of Skin Cancer (ABCDE Rule) <img src="{{ url_for('static', filename='images/info.jpg') }}" alt="Skin Cancer Signs" style="width: 50px; height: 50px; float: right; margin-left: 10px;"></h4>
+    <ul>
+        <li><strong>A: Asymmetry</strong> – One half of the lesion does not match the other.</li>
+        <li><strong>B: Border</strong> – Edges are irregular, scalloped, or poorly defined.</li>
+        <li><strong>C: Color</strong> – Multiple or uneven colors are present.</li>
+        <li><strong>D: Diameter</strong> – Lesions larger than 6mm may indicate concern.</li>
+        <li><strong>E: Evolving</strong> – Changes in size, shape, or color are warning signs.</li>
+    </ul>
+    
+    <h4>What To Do If You Notice Suspicious Lesions</h4>
+    <ul>
+        <li><strong>Perform Regular Self-Checks:</strong> Examine your skin monthly for new or changing lesions.</li>
+        <li><strong>Consult a Dermatologist:</strong> If you spot anything unusual, seek professional evaluation.</li>
+        <li><strong>Get Annual Skin Screenings:</strong> Regular check-ups are essential, especially for those at higher risk.</li>
+    </ul>
+    
+    <p>Early identification is key. Understanding these differences and acting promptly can save lives.</p>
+</section>
+{% endblock %}
+

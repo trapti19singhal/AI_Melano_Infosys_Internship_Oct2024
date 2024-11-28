@@ -1,0 +1,23 @@
+<!-- contact.html -->
+{% extends "base.html" %}
+{% block title %}Contact Us - Melano AI{% endblock %}
+{% block content %}
+<section class="contact">
+    <h2>Contact Us</h2>
+    <form method="post" action="#">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        
+        <button type="submit" class="btn-primary">Send Message</button>
+    </form>
+    <div class="social-links">
+        <a href="#">LinkedIn</a> | <a href="#">Twitter</a> | <a href="#">Facebook</a>
+    </div>
+</section>
+{% endblock %}

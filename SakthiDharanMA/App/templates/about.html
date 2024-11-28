@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}About - Melano AI{% endblock %}
+{% block content %}
+<section class="about">
+    <h2>About MelanoAI</h2>
+    <img src="{{ url_for('static', filename='images/about.jpg') }}" alt="About Image">
+    <p>
+        <strong>MelanoAI</strong> is an advanced technology platform dedicated to revolutionizing the early detection and diagnosis of skin cancer. Using state-of-the-art artificial intelligence, MelanoAI analyzes skin lesions with remarkable accuracy, helping healthcare professionals identify potentially malignant conditions swiftly and effectively.
+    </p>
+    <p>
+        Our mission is to make skin cancer screening accessible, accurate, and inclusive for everyone. MelanoAI is trained on diverse datasets, ensuring it performs equally well across various skin tones, promoting equity in dermatological care. By integrating cutting-edge machine learning with medical expertise, MelanoAI empowers clinicians to make informed decisions, enhancing patient outcomes and saving lives.
+    </p>
+    <p>
+        With a focus on innovation, accessibility, and reliability, MelanoAI is a vital tool for modern dermatology, offering a smarter and more efficient way to combat skin cancer. Together, we’re shaping the future of healthcare—one scan at a time.
+    </p>
+</section>
+{% endblock %}
+

@@ -1,0 +1,13 @@
+<!-- index.html -->
+{% extends "base.html" %}
+{% block title %}Home - Melano AI{% endblock %}
+{% block content %}
+<section class="home-hero">
+    <h1>Revolutionizing Skin Cancer Screening with AI</h1>
+    <p>Using advanced AI technology, MelanoAI offers accurate and inclusive skin cancer screening.</p>
+    <div class="cta-buttons">
+        <a href="{{ url_for('predict') }}" class="btn-primary">Try Our Screening Tool</a>
+        <a href="{{ url_for('info') }}" class="btn-secondary">Learn More About Skin Cancer</a>
+    </div>
+</section>
+{% endblock %}
