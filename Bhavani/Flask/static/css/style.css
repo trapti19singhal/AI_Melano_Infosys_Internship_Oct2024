@@ -1,0 +1,201 @@
+body {
+    background-image: url('/static/images/healthcare_icon.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Animation for smooth fade-in */
+.dialog-box {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.7); /* White with transparency */
+    padding: 30px;
+    border-radius: 15px;
+    width: 500px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0; /* Initially transparent */
+    animation: fadeIn 1s forwards; /* Fade-in animation */
+}
+
+/* Keyframes for the fade-in effect */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#intro-dialog {
+    display: block; /* Show the first dialog by default */
+}
+
+h1, h2 {
+    text-decoration: underline;
+    color: #333;
+}
+
+.intro-text {
+    color: #333;
+}
+
+button, .back-btn {
+    padding: 12px 25px;
+    background-color: #28a745;
+    border: none;
+    color: white;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+button:hover, .back-btn:hover {
+    background-color: #218838;
+}
+
+.predict-btn {
+    background-color: #007bff;
+}
+
+.predict-btn:hover {
+    background-color: #0056b3;
+}
+
+/* File Upload Section */
+#file-upload {
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 1.1em;
+    background-color: #f8f9fa; /* Light grey background for better visibility */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    color: #333;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Choose file button inside the file upload box */
+#file-upload input[type="file"] {
+    width: 100%;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1.1em;
+    color: #333;
+    cursor: pointer;
+}
+
+.slogan {
+    font-weight: bold;
+    font-size: 1.3em; /* Larger font for emphasis */
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.slogan-text {
+    font-style: italic;
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 1.2em; /* Slightly larger for emphasis */
+}
+
+#result-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.result-text {
+    font-weight: bold;
+    font-size: 1.3em; /* Increased size */
+    color: #333;
+    margin-top: 10px;
+}
+
+#back-to-intro, #back-to-project {
+    background-color: transparent;
+    color: #333;
+    font-size: 2em;
+    border: none;
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#back-to-intro:hover, #back-to-project:hover {
+    color: #007bff;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+    position: absolute;
+    top: 20px;
+    left: 20px; /* Align Home button to the left */
+    display: flex;
+    gap: 30px; /* Increased space between buttons */
+}
+
+.navigation-buttons button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.navigation-buttons button:hover {
+    background-color: #0056b3;
+}
+
+/* About Dialog Box */
+#about-dialog {
+    position: absolute;
+    top: 120%; /* Increased space between About dialog and main dialog */
+    left: 0; /* Align to the left of the About button */
+    background: rgba(255, 255, 255, 0.9); /* Transparent background */
+    border-radius: 10px;
+    padding: 5px 10px; /* Reduced padding for smaller box */
+    width: 180px; /* Further decreased width */
+    height: 100px; /* Further decreased height */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none; /* Initially hidden */
+    text-align: center;
+    color: black; /* Black text color */
+    font-weight: bold; /* Bold text */
+}
+
+#about-dialog p {
+    font-weight: bold;
+    color: black; /* Black color for text */
+    font-size: 0.9em;
+}
+
+/* Fix for file name box */
+#file-name-box {
+    display: none; /* Initially hidden */
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #333;
+    text-align: center;
+}
+

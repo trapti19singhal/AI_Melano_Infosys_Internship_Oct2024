@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Cancer Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Transparent Dialog Box 1 -->
+    <div class="dialog-box" id="intro-dialog">
+        <h1>Infosys Internship Project</h1>
+        <p class="intro-text">Get started with our Skin Cancer Detection using AI.</p>
+        <button id="get-started-btn">Get Started</button>
+    </div>
+
+    <!-- Transparent Dialog Box 2 (After Get Started) -->
+    <div class="dialog-box" id="project-dialog">
+        <button id="back-to-intro" class="back-btn">&#8592;</button> <!-- Back Button as an arrow -->
+        <h1>Skin Cancer Detection</h1> <!-- Updated heading -->
+        <p class="slogan">"AI in Action: Early Cancer Detection"</p> <!-- Updated slogan -->
+        <div class="file-upload-section">
+            <label for="file-upload" id="file-upload-box">
+                <input type="file" id="file-upload" />
+            </label>
+            <div id="file-name-box"></div> <!-- This box will display the file name -->
+        </div>
+        <button class="predict-btn" id="predict-btn">Predict</button>
+    </div>
+
+    <!-- Prediction Result Dialog Box -->
+    <div class="dialog-box" id="result-dialog">
+        <button id="back-to-project" class="back-btn">&#8592;</button> <!-- Back Button as an arrow -->
+        <h2>Prediction Results</h2>
+        <p class="slogan-text">"Empowering detection of skin cancer through AI for a healthier tomorrow"</p>
+        <img id="result-img" src="" alt="Uploaded Image">
+        <p id="prediction-class" class="result-text">Class: </p>
+        <p id="confidence" class="result-text">Confidence: </p>
+    </div>
+
+    <!-- About Dialog Box -->
+    <div class="dialog-box" id="about-dialog" class="hidden">
+        <p><b>This web page is all about detecting skin cancer using images. It detects based on a model called RGB augmented images.</b></p>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
