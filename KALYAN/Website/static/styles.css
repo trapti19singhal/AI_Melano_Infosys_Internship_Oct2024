@@ -1,0 +1,197 @@
+/* General Reset and Box Sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+
+}
+
+/* Variables for Colors */
+:root {
+    --primary-bg: #201a1a;       /* Background color */
+    --secondary-bg: #f9eeee;     /* Section background */
+    --highlight: #25c65b;        /* Neon Green */
+    --accent: #e9e9e9;           /* Neon Pink */
+    --text-light: #d06363;       /* Light text */
+    --text-muted: #615151;       /* Muted text */
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    --nav-box-color: #151314;    /* Default box color for navigation options */
+    --nav-hover-color: #f02166;  /* Default hover color for navigation links (Neon Pink) */
+    --warning-bg-color: #d86620; /* Default background color for warning */
+    --warning-text-color: #292525; /* Default text color for warning */
+    --prediction-bg-color: #6bd28f; /* Customizable background color for prediction page */
+}
+
+/* Body and Background */
+body {
+    background-color: var(--prediction-bg-color); /* Apply the customizable background color */
+    color: var(--text-light);
+    line-height: 1.6;
+    min-height: 100vh; /* Ensure the body spans the full height of the viewport */
+    display: flex;
+    flex-direction: column;
+    background-image: url('backgroundpic.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: var(--secondary-bg);
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 10px var(--shadow-dark);
+}
+
+nav a {
+    color: var(--highlight);
+    margin: 0 20px;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 15px; /* Adds padding inside the box */
+    border: 2px solid var(--nav-box-color); /* Adds border around each nav item */
+    border-radius: 5px;
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--nav-hover-color); /* Change text color on hover (customizable) */
+    text-shadow: 0 0 5px var(--nav-hover-color); /* Change text shadow on hover */
+    text-decoration: underline;
+    transform: scale(1.05);
+    border-color: var(--nav-hover-color); /* Change border color on hover */
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background: linear-gradient(135deg, var(--accent), var(--highlight));
+    text-align: center;
+    padding: 20px;
+    color: var(--text-light);
+    box-shadow: inset 0 0 50px var(--shadow-dark);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px var(--highlight);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    background-color: var(--highlight);
+    color: var(--primary-bg);
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--accent);
+    transform: scale(1.05);
+}
+
+/* Features Section */
+.features-section {
+    padding: 50px 10%;
+    background-color: var(--secondary-bg);
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2rem;
+    color: var(--highlight);
+    margin-bottom: 20px;
+    text-shadow: 0 0 5px var(--highlight);
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.feature {
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.feature img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px var(--shadow-dark);
+}
+
+.feature h3 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: var(--accent);
+}
+
+.feature p {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.feature:hover {
+    transform: translateY(-10px);
+}
+
+/* Footer */
+footer {
+    background-color: var(--secondary-bg);
+    color: var(--text-muted);
+    text-align: center;
+    padding: 20px;
+    margin-top: auto; /* Ensures the footer sticks to the bottom of the page */
+}
+
+:root {
+    --warning-bg-color: #d86620; /* Default background color for warning */
+    --warning-text-color: #292525; /* Default text color for warning */
+    --prediction-bg-color: hsl(0, 0%, 100%); /* Customizable background color for prediction page */
+}
+
+
+
+/* Prediction Page */
+.container {
+    padding: 30px;
+    text-align: center;
+}
+
+.warning {
+    background-color: var(--warning-bg-color); /* Background color for warning */
+    color: var(--warning-text-color); /* Text color for warning */
+    padding: 5px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--shadow-dark);
+}
+
+.image-container {
+    margin-top: 20px;
+}
+
+.image-container img {
+    max-width: 60%; /* Keeps the width at 60% */
+    height: 130px;  /* Set a fixed height for the image */
+    object-fit: cover; /* Ensures the image is cropped to fit the box without distortion */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px var(--shadow-dark);
+}

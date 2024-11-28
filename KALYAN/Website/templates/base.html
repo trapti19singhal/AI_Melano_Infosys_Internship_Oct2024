@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    
+    <!-- Navigation -->
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('description') }}">Description</a>
+        <a href="{{ url_for('prediction') }}">Prediction</a>
+        <a href="{{ url_for('contact') }}">Contact Us</a>
+    </nav>
+    <!-- Content -->
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    <!-- Footer -->
+    <footer style="position: absolute; bottom: 0; width: 100%; background-color: #333; color: white; text-align: center; padding: 10px 0;">
+        <p>© 2024 Melanoma-Classification. All rights reserved.</p>
+    </footer>
+    </body>
+    </html>
+    

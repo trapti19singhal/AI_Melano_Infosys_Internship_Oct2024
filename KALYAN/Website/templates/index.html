@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+    <div class="hero-text">
+        <h1>Welcome to Melanoma Detection</h1>
+        <p>Upload images to detect melanoma conditions with high accuracy.</p>
+        <a class="cta-button" href="{{ url_for('prediction') }}">Get Started</a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    {% if warning_message %}
+        <div class="warning">
+            <p>{{ warning_message }}</p>
+        </div>
+        <div class="image-container">
+            <img src="{{ img_url }}" alt="Uploaded Image">
+        </div>
+        <p>{{ result }}</p>
+        <p>Prediction Accuracy: {{ accuracy }}</p>
+    {% else %}
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit" class="cta-button">Predict</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}
