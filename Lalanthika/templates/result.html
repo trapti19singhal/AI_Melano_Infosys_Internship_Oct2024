@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="result-container">
+        <div class="result-box">
+            <h2>Prediction Result - Uploaded</h2>
+    
+            <!-- Display uploaded image -->
+            <div class="result-image">
+                <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image" class="result-img">
+            </div>
+    
+            <!-- Display prediction, class, and confidence score -->
+            <p>The image is predicted to be: <strong>{{ prediction }}</strong></p>
+            <p>Class Number: <strong>{{ class_num }}</strong></p>
+
+            <!-- Information about class labels (Benign - 0, Malignant - 1) -->
+            <div class="info">
+                <h5>* Benign - 0 *</h5>
+                <h5>* Malignant - 1 *</h5>
+            </div>
+
+            <!-- Button to go back to the home page for new upload -->
+            <div class="upload2">
+                <form action="/" method="GET">
+                    <button type="submit" class="upload-btn">Upload New Image</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

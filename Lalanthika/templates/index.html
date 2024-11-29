@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MelanomaAI Skin Cancer Prediction</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <!-- Main Heading -->
+    <div class="heading">
+        <h1>
+            <span class="jump">I</span>
+            <span class="jump">n</span>
+            <span class="jump">f</span>
+            <span class="jump">o</span>
+            <span class="jump">s</span>
+            <span class="jump">y</span>
+            <span class="jump">s</span>
+            <span class="jump registered">®</span>
+            <span class="jump">&nbsp;</span>
+            <span class="jump">-</span>
+            <span class="jump">&nbsp;</span>
+            <span class="jump">M</span>
+            <span class="jump">e</span>
+            <span class="jump">l</span>
+            <span class="jump">a</span>
+            <span class="jump">n</span>
+            <span class="jump">o</span>
+            <span class="jump">m</span>
+            <span class="jump">a</span>
+            <span class="jump">A</span>
+            <span class="jump">I</span>
+            <span class="jump">&nbsp;</span>
+            <span class="jump">S</span>
+            <span class="jump">k</span>
+            <span class="jump">i</span>
+            <span class="jump">n</span>
+            <span class="jump">&nbsp;</span>
+            <span class="jump">C</span>
+            <span class="jump">a</span>
+            <span class="jump">n</span>
+            <span class="jump">c</span>
+            <span class="jump">e</span>
+            <span class="jump">r</span>
+            <span class="jump">&nbsp;</span>
+            <span class="jump">P</span>
+            <span class="jump">r</span>
+            <span class="jump">e</span>
+            <span class="jump">d</span>
+            <span class="jump">i</span>
+            <span class="jump">c</span>
+            <span class="jump">t</span>
+            <span class="jump">i</span>
+            <span class="jump">o</span>
+            <span class="jump">n</span>
+        </h1>            
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Let's predict an Image</h1>
+            <p class="sub-heading">Choose an image from your device to get a prediction.</p>
+        </header>
+        <form action="/" method="POST" enctype="multipart/form-data" class="upload-form">
+            <div class="green-box">
+                <!-- Upload Button (File input is hidden) -->
+                <button type="button" class="upload-box" id="upload-button">
+                    <i class="upload-icon">&#128247;</i> <!-- Camera Icon -->
+                    <span>Click to Upload an Image</span>
+                </button>
+                <input type="file" id="file-upload" class="file-input" name="file" onchange="displayFileName()" hidden />
+                <p id="file-chosen">No file chosen</p>
+            </div>                   
+            <button type="submit" class="submit-btn" id="submit-btn" disabled>Submit Image</button>
+        </form>
+    </div>
+
+    <script src="static/script.js"></script>
+</body>
+</html>
