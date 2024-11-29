@@ -38,8 +38,8 @@ Sakthi Dharan/
 ## Installation
 1. **Clone the Repository**
     ```sh
-    git clone [https://github.com/yourusername/melanoai.git](https://github.com/trapti19singhal/AI_Melano_Infosys_Internship_Oct2024/tree/main/SakthiDharanMA)
-    cd melanoai
+    git clone https://github.com/trapti19singhal/AI_Melano_Infosys_Internship_Oct2024
+    cd SakthiDharanMA
     ```
 
 2. **Create a Virtual Environment**
