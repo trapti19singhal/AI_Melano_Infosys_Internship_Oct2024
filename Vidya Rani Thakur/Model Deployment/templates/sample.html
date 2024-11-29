@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MelanoAI - Sample Images</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f3f4f6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #6c8e9f;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 10px solid #5b7d8c;
+        }
+
+        header .left-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        header .left-content h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        header .left-content p {
+            font-size: 1.2em;
+            margin-top: 5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            font-size: 1.2em;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #5b7d8c;
+            border-radius: 5px;
+        }
+
+        section {
+            padding: 50px 20px;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        #sample {
+            background-color: #f7f7f7;
+            padding: 50px 20px;
+        }
+
+        #sample h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        #sample p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sample-image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .sample-image-item {
+            text-align: center;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .sample-image-item img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            text-align: center;
+            background-color: #5b7d8c;
+            color: white;
+            padding: 10px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="left-content">
+            <h1>MelanoAI</h1>
+            <p>Your AI-powered Skin Cancer Detection Tool</p>
+        </div>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="sample.html">Sample</a>
+            <a href="predict.html">Predict</a>
+        
+        </nav>
+    </header>
+
+    <!-- Sample Section -->
+    <section id="sample">
+        <h2>Sample Images</h2>
+        <p>Below are examples of skin lesion images categorized as benign or malignant:</p>
+
+        <div class="sample-image-grid">
+            <div class="sample-image-item">
+                <h3>Benign Sample 1</h3>
+                <img src="sample_images/benign_1.jpg" alt="Benign Skin Lesion 1">
+            </div>
+            <div class="sample-image-item">
+                <h3>Malignant Sample 1</h3>
+                <img src="sample_images/malignant_1.jpg" alt="Malignant Skin Lesion 1">
+            </div>
+            <div class="sample-image-item">
+                <h3>Benign Sample 2</h3>
+                <img src="sample_images/benign_2.jpg" alt="Benign Skin Lesion 2">
+            </div>
+            <div class="sample-image-item">
+                <h3>Malignant Sample 2</h3>
+                <img src="sample_images/malignant_2.jpg" alt="Malignant Skin Lesion 2">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 MelanoAI. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
