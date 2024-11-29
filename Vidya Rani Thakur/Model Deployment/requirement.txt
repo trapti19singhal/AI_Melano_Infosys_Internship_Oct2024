@@ -1,0 +1,5 @@
+# install 
+flask
+tensorflow
+numpy
+pillow
