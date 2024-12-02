@@ -1,7 +1,0 @@
-Model,Loss,Accuracy,F1_Benign,F1_Malignant
-Unique_RGB_Model,0.77,0.88,0.88,0.88
-Unique_Normalize_Gray_Model,0.66,0.9,0.9,0.9
-Unique_Augmented_RGB_Model,1.24,0.77,0.73,0.8
-Unique_Augmented_Normalize_Gray_Model,0.81,0.91,0.91,0.91
-VGG16_Model,0.34,0.86,0.86,0.86
-VGG19_Model,0.39,0.83,0.83,0.84
